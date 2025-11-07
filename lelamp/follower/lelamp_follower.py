@@ -181,8 +181,8 @@ class LeLampFollower(Robot):
         for motor in reversed(self.bus.motors):
             input(f"Connect the controller board to the '{motor}' motor only and press enter.")
             self.bus.setup_motor(motor)
-            self.bus.write("Min_Voltage_Limit", motor, 100, normalize=False)
-            self.bus.write("Max_Voltage_Limit", motor, 140, normalize=False)
+            self.bus.write("Min_Voltage_Limit", motor, 45, normalize=False)
+            self.bus.write("Max_Voltage_Limit", motor, 80, normalize=False)
             print(f"'{motor}' motor id set to {self.bus.motors[motor].id}")
 
     def get_observation(self) -> dict[str, Any]:
