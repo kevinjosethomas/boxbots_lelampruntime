@@ -15,6 +15,7 @@ from livekit.plugins import (
     noise_cancellation,
 )
 from typing import Union
+from lelamp.service.config_utils import load_config
 from lelamp.service.motors.animation_service import AnimationService
 from lelamp.service.rgb.rgb_service import RGBService
 
@@ -232,7 +233,8 @@ Demo rules:
 
 # Entry to the agent
 async def entrypoint(ctx: agents.JobContext):
-    agent = LeLamp(lamp_id="lelamp")
+    saved_id, _ = load_config()
+    agent = LeLamp(lamp_id=saved_id)
     
     session = AgentSession(
         llm=openai.realtime.RealtimeModel(
